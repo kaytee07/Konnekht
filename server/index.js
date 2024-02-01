@@ -8,8 +8,10 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import path from "path";
 import authRouter from "./routes/auth.js";
+import userRouter from "./routes/users.js"
 import { fileURLToPath } from "url";
 import { register } from "./controllers/auth.js";
+import authRoutes from "./routes/auth.js";
 
 //CONFIGURATIONS
 
@@ -42,7 +44,8 @@ const upload = multer({ storage });
 app.post("/auth/register", upload.single("picture"), register);
 
 // ROUTES
-app.use("/auth", authRouter)
+app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
 
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 6001;
