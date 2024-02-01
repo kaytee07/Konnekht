@@ -8,6 +8,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
+import { register } from "module";
 
 //CONFIGURATIONS
 
@@ -35,6 +36,9 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+
+// ROUTES WITH FILES
+app.post("/auth/register", upload.single("picture"), register);
 
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 6001;
