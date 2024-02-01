@@ -45,3 +45,21 @@ export const register = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+export const login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+        if (!user) return res.status(400).json({ msg: "User cannot be found" });
+
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch) return res.status(400).json({ msg: "invalid credentials" });
+
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+        res.cookie("jwt", token, { httpOnly: true });
+        delete user.password;
+        res.status(200).json({ token, user });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+}
