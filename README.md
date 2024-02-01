@@ -1,0 +1,1 @@
+This is a social media application where useres can create profiles, share content, follow other users, delete post etc

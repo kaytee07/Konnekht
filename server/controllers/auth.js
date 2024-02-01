@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import jwt from "jwt";
+import jwt from "jsonwebtoken";
 import User from "../models/User.js"
 
 
@@ -33,7 +33,13 @@ export const register = async (req, res) => {
             viewedProfile: 0,
             impressions: 0
         })
-        const savedUser = newUser.save()
+        const savedUser = newUser.save();
+        const formattedDate = savedUser.dateOfBirth.toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+        });
+        console.log(formattedDate)
         res.status(201).json(savedUser);
     } catch (err) {
         res.status(500).json({ error: err.message });
