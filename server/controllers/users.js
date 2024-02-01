@@ -28,8 +28,12 @@ export const getUserFriends = async (req, res) => {
 
 export const addRemoveFriend = async () => {
     try {
+        const { id, friendid } = req.params;
+        const user = await User.findById(id);
+        const friend = user.friend.some((id) => id === friendid);
+    
 
     } catch (err) {
-        
+        return res.status(404).json({ error: error.message });
     }
 }
