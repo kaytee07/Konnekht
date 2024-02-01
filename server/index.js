@@ -8,7 +8,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
-import { register } from "module";
+import { register } from "./controllers/auth.js";
 
 //CONFIGURATIONS
 
