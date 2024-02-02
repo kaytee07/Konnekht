@@ -22,6 +22,16 @@ export const createPost = async (req, res) => {
         const post = Post.find();
         res.status(201).json(post);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(409).json({ message: error.message });
+    }
+
+};
+
+export const getFeedPosts = async () => {
+    try {
+        const feed = Post.find();
+        res.status(200).json(feed);
+    } catch(error) {
+        res.status(404).json({ message: error.message });
     }
 }
