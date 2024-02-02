@@ -30,8 +30,20 @@ export const addRemoveFriend = async () => {
     try {
         const { id, friendid } = req.params;
         const user = await User.findById(id);
-        const friend = user.friend.some((id) => id === friendid);
-    
+        
+        if(user.friends.includes(friendid)) {
+            user.friends = user.friends.filter((id) => id !== friendid);
+        } else {
+            user.friends.push(friendid);
+        }
+        await user.save()
+        const friends = await Promise.all(
+            user.friends.map((id) => User.findById(id))
+        );
+        const formattedResponse = friends.map(({ id, firstName, lastName, location, occupation, picturePath }) => {
+            return { id, firstName, lastName, location, occupation, picturePath }
+        })
+        res.status(200).json(formattedResponse);
 
     } catch (err) {
         return res.status(404).json({ error: error.message });
