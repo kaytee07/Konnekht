@@ -1,7 +1,9 @@
+import Navbar from "./screens/navbar";
+
 const LoginPage = () => {
     return (
         <div>
-            Loginpage
+            <Navbar/>
         </div>
     )
 }
