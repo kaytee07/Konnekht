@@ -1,4 +1,5 @@
 import { Box, useTheme, useMediaQuery, Typography } from "@mui/material"
+import Form from "./Form";
 
 const LoginPage = () => {
     const theme = useTheme();
@@ -6,7 +7,7 @@ const LoginPage = () => {
     return (
         <Box>
             <Box 
-                width="100%" 
+                width="1000px" 
                 backgroundColor={ theme.palette.background.alt } 
                 p="1rem 6%" 
                 textAlign="center"
@@ -35,6 +36,7 @@ const LoginPage = () => {
                 <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }}>
                     Hello, Welcome to Konnekht
                 </Typography>
+                <Form/>
 
             </Box>
         </Box>
