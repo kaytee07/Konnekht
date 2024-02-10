@@ -7,7 +7,6 @@ const LoginPage = () => {
     return (
         <Box>
             <Box 
-                width="1000px" 
                 backgroundColor={ theme.palette.background.alt } 
                 p="1rem 6%" 
                 textAlign="center"
@@ -28,12 +27,11 @@ const LoginPage = () => {
             </Box>
             <Box 
                 width={ isNonMobileScreens ? "50%" : "93%"}
-                p="2rem"
                 m="2rem auto"
                 borderRadius="1.5rem"
                 backgroundColor={theme.palette.background.alt}
             >
-                <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }}>
+                <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }} p={2}>
                     Hello, Welcome to Konnekht
                 </Typography>
                 <Form/>

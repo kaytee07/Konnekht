@@ -1,0 +1,106 @@
+import {
+    ManageAccountsOutlined,
+    EditOutlined,
+    LocationOnOutlined,
+    WorkOutlineOutlined
+} from "@mui/icons-material";
+import { Box, Typography, Divider, useTheme, Stack, Grid} from "@mui/material";
+import UserImage from  "../../components/UserImage";
+import WidgetWrapper from "../../components/WidgetWrapper";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+
+const UserWidget = ({ userId, picturePath }) => {
+    const [user, setUser] = useState(null);
+    const { palette } = useTheme();
+    const navigate = useNavigate();
+    const token = useSelector((state) => state.token);
+    const dark = palette.neutral.dark;
+    const medium = palette.neytral.medium;
+    const main = palette.neutral.main;
+
+    const getUser = async () => {
+        const response = await fetch(`http://localhost:3001/users/${userId}`, {
+            method: "GET",
+            credentials: "include"
+        })
+
+        const userData = await response.json();
+        setUser(userData);
+    }
+
+    useEffect(() => {
+        getUser();
+    }, []);
+
+    if (!user) {
+        return null
+    }
+
+    const {
+        firstName,
+        lastName,
+        location,
+        occupation,
+        viewedProfile,
+        impressions,
+        friends
+    } = user;
+
+  return (
+    <WidgetWrapper>
+        {/* FIRST ROW */}
+        <Grid container
+            gap="0.5rem"
+            pb="1.1rem"
+            onClick={() => navigate(`/profile/${userId}`)}
+        >
+            <Grid item>
+                <Stack direction="row">
+                    <UserImage image={picturePath}>
+
+                    </UserImage>
+                    <Stack direction="column" spacing={1}>
+                        <Box>
+                            <Typography
+                                variant="h4"
+                                color="dark"
+                                fontWeight="500"
+                                sx= {{ 
+                                    "&: hover": {
+                                        color: palette.primary.light,
+                                        cursor: "pointer"
+                                    }
+                                 }}
+                            >
+                                {firstName} {lastName}
+                            </Typography>
+                        </Box>
+                        <Box>
+                            <Typography color={medium}>
+                                 {friends.length} {friends.length > 1 ? "friends": "friend"}
+                            </Typography>
+                        </Box>
+                    </Stack>
+                </Stack>
+            </Grid>
+            <Grid item>
+                <Box></Box>
+                <Box></Box>
+            </Grid>
+            <Grid item>
+                <Box></Box>
+                <Box></Box>
+            </Grid>
+            <Grid item>
+
+            </Grid>
+           
+        </Grid>
+    </WidgetWrapper>
+  )
+};
+
+export default UserWidget;
