@@ -106,13 +106,13 @@ const UserWidget = ({ userId, picturePath }) => {
              <Divider/>
             {/* THIRD ROW */}
             <Grid item p="1rem 0">
-                <Box display="flex" gap="1rem" flexDirection="row">
+                <Box display="flex" justifyContent="space-between" flexDirection="row">
                     <Typography color={medium}> {`who's viewed your profile`}</Typography>
                     <Typography color={main} fontWeight="500">
                         {viewedProfile}
                     </Typography>
                 </Box>
-                <Box display="flex" gap="1rem" flexDirection="row">
+                <Box display="flex" justifyContent="space-between" flexDirection="row">
                     <Typography color={medium}>Impressions of your post</Typography>
                     <Typography color={main} fontWeight="500">
                         {impressions}
@@ -125,32 +125,36 @@ const UserWidget = ({ userId, picturePath }) => {
                 <Typography fontSize="1rem" color="main" fontWeight="500" mb="1rem">
                     Social Profiles
                 </Typography>
-                <Stack direction="column">
-                    <Stack direction="row">
-                        <img src="../../assets/linkedin.png" alt="twitter" />
-                        <Stack direction="column">
-                            <Typography color={main} fontWeight="500">
-                                 Twitter
-                            </Typography>
-                            <Typography color={medium}>
-                                 Social Network
-                            </Typography>
-                        </Stack>
+                <Stack direction="column" display="flex" gap="0.5rem">
+                     <Box display="flex"  justifyContent="space-between">
+                        <Box display="flex" gap="0.5rem" alignItems="center">
+                           <img src="https://res.cloudinary.com/dbyubqmb0/image/upload/v1707736151/twitter_sytsfl.png" alt="twitter" width="25px" height="25px"/>
+                            <Box  display="flex" flexDirection="column">
+                                <Typography color={main} fontWeight="500">
+                                    Twitter
+                                </Typography>
+                                <Typography color={medium}>
+                                     Social Network
+                                </Typography>
+                            </Box>
+                        </Box>
                         <EditOutlined sx={{ color: main }}/>
-                    </Stack>
+                    </Box>
 
-                    <Stack direction="row">
-                        <img src="../../public/linkedin.png" alt="twitter" />
-                        <Stack direction="column">
-                            <Typography color={main} fontWeight="500">
-                                 LinkedIn
-                            </Typography>
-                            <Typography color={medium}>
-                                 Network Platform
-                            </Typography>
-                        </Stack>
+                    <Box display="flex" justifyContent="space-between">
+                        <Box display="flex" gap="0.5rem" alignItems="center">
+                           <img src="https://res.cloudinary.com/dbyubqmb0/image/upload/v1707736142/linkedin_kprftp.png" alt="twitter" width="25px" height="25px"/>
+                            <Box  display="flex" flexDirection="column">
+                                <Typography color={main} fontWeight="500">
+                                    LinkedIn
+                                </Typography>
+                                <Typography color={medium}>
+                                    Network Platform
+                                </Typography>
+                            </Box>
+                        </Box>
                         <EditOutlined sx={{ color: main }}/>
-                    </Stack>
+                    </Box>
                 </Stack>
             </Grid>   
         </Grid>

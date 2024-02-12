@@ -23,6 +23,7 @@ const LoginPage = () => {
                     }}
                 >
                     Konnekht
+                    
                 </Typography>
             </Box>
             <Box 
@@ -34,6 +35,7 @@ const LoginPage = () => {
                 <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }} p={2}>
                     Hello, Welcome to Konnekht
                 </Typography>
+                <img src="../../assets/linkedin.png" alt="" />
                 <Form/>
 
             </Box>
