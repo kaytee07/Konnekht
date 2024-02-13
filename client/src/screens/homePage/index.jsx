@@ -2,7 +2,7 @@ import { Box, useMediaQuery } from "@mui/material";
 import { useSelector } from "react-redux";
 import Navbar from "../navbar";
 import UserWidget from "../../screens/widgets/UserWidget";
-import MyPostWidget from "../../screens/MyPostWidgest";
+import MyPostWidget from "../../screens/widgets/MyPostWidget";
 
 const HomePage = () => {
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
@@ -12,7 +12,7 @@ const HomePage = () => {
             <Navbar />
             <Box
               width="100%"
-              padding="2rem 6%"
+              padding="2rem 0%"
               display={isNonMobileScreens ? "flex" : "block"}
               gap="0.5rem"
               justifyContent="space-between"
