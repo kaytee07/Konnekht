@@ -32,6 +32,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
     const data = await response.json;
     dispatch(setFriends({ friends: data }))
   }
+
   return (
     <Box sx={{
       display: "flex",
@@ -45,9 +46,44 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
         gap: "1rem"
         }}>
             <Box
-              OnClic
+              onClick={()=> {
+                navigate(`/profile/$friendId`);
+                navigate(0);
+              }}
             >
+              <Typography
+                color={main}
+                variant="h5"
+                fontWeight="500"
+                sx={{
+                  "&:hover": {
+                    color: palette.primary.light,
+                    cursor: "pointer"
+                  }
 
+                }}
+              >
+                {name}
+              </Typography>
+              <Typography color={medium} fontSize="0.75rem">
+                {subtitle}
+              </Typography>
+            </Box>
+            <Box sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center"
+            }}>
+              <IconButton
+                onClick={()=> patchFriend()}
+                sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
+              >
+                {isFriend ? (
+                  <PersonRemoveOutlined sx={{ color: primaryDark}}/>
+                ): (
+                  <PersonAddOutlined sx={{ color: primaryDark}}/>
+                )}
+              </IconButton>
             </Box>
         </Box>
     </Box>
