@@ -30,6 +30,7 @@ const PostWidget = ({
          const loggedInUserId = useSelector((state)=> state.user._id);
          const isLiked =Boolean(likes[loggedInUserId]);
          const likeCount = Object.keys(likes).length;
+         const name = `${firstName} ${lastName}`;
 
         
          const { palette } = useTheme();
