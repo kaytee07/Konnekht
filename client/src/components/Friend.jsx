@@ -10,7 +10,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const navigate = useNavigate();
   const { _id } = useSelector((state) => state.user);
   const { token } = useSelector((state) => state.token);
-  const { friends } = useSelector((state) => state.user);
+  const friends = useSelector((state) => state.user.friends);
 
   const { palette } = useTheme();
   const primaryLight = palette.primary.light;
@@ -18,7 +18,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const main = palette.neutral.main;
   const medium = palette.neutral.medium;
 
-  const isFriend = friends.find((friend) => friend._id === friendId)
+  const isFriend =  friends && friends.find((friend) => friend._id === friendId)
 
   const patchFriend = async () => {
     const response = await fetch(`http://localhost:3001/users/${_id}/${friendId}`, {
@@ -45,6 +45,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
         alignItems: "center",
         gap: "1rem"
         }}>
+          <UserImage image={userPicturePath} size="55px" />
             <Box
               onClick={()=> {
                 navigate(`/profile/$friendId`);

@@ -10,14 +10,14 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     const token = useSelector((state) => state.token);
 
     const getPosts = async () => {
-        const response = await fetch("htpp://localhost:3001/posts", {
+        const response = await fetch("http://localhost:3001/posts", {
             method: "GET",
             credentials: "include"
         });
         const data = await response.json();
         dispatch(setPosts({ posts: data }));
     }
-
+    console.log(posts)
     const getUserPosts = async () => {
         const response = await fetch(`http://localhost:3001/posts/${userId}`, {
             method: "GET",
@@ -41,7 +41,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
         {
             posts.map(
                 ({
-                    _id
+                    _id,
                     userId,
                     firstName,
                     lastName,
@@ -52,7 +52,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
                     userPicture,
                     likes,
                     comments
-                }) => (
+                })=> (
                     <PostWidget
                         key={_id}
                         postId={_id}
