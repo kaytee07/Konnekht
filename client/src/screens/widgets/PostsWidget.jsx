@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPosts } from "../../state";
 import PostWidget from "./PostWidget";
@@ -7,7 +7,7 @@ import PostWidget from "./PostWidget";
 const PostsWidget = ({ userId, isProfile = false }) => {
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.posts);
-    const token = useSelector((state) => state.token);
+    const [dataBack, setDataBack] = useState(false);
 
     const getPosts = async () => {
         const response = await fetch("http://localhost:3001/posts", {
@@ -15,17 +15,22 @@ const PostsWidget = ({ userId, isProfile = false }) => {
             credentials: "include"
         });
         const data = await response.json();
+        console.log(data)
         dispatch(setPosts({ posts: data }));
+        if(data) setDataBack(true);
     }
-    console.log(posts)
+    
     const getUserPosts = async () => {
+        console.log(userId)
         const response = await fetch(`http://localhost:3001/posts/${userId}`, {
             method: "GET",
             credentials: "include"
         });
 
         const data = await response.json();
+        console.log(data)
         dispatch(setPosts({ posts: data}));
+        if(data) setDataBack(true);
     };
 
     useEffect(() => {
@@ -38,8 +43,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 
   return (
     <>
-        {
-            posts.map(
+        {dataBack && posts.map(
                 ({
                     _id,
                     userId,

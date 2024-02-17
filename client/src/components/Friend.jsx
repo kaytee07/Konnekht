@@ -29,7 +29,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
       credentials: "include"
     });
 
-    const data = await response.json;
+    const data = await response.json();
     dispatch(setFriends({ friends: data }))
   }
 
@@ -42,13 +42,15 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
         <Box sx={{
         display: "flex",
         justifyContent: "space-between",
+        width: "100%",
         alignItems: "center",
         gap: "1rem"
         }}>
+          <Box display="flex" gap="2rem">
           <UserImage image={userPicturePath} size="55px" />
             <Box
               onClick={()=> {
-                navigate(`/profile/$friendId`);
+                navigate(`/profile/${friendId}`);
                 navigate(0);
               }}
             >
@@ -69,6 +71,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
               <Typography color={medium} fontSize="0.75rem">
                 {subtitle}
               </Typography>
+            </Box>
             </Box>
             <Box sx={{
               display: "flex",
