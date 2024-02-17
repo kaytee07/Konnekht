@@ -13,6 +13,6 @@ userRoutes.get("/:id", verifyToken, getUser);
 userRoutes.get("/:id/friends", verifyToken, getUserFriends);
 
 //UPDATE
-userRoutes.post("/:id/:friendid", verifyToken, addRemoveFriend);
+userRoutes.patch("/:id/:friendid", verifyToken, addRemoveFriend);
 
 export default userRoutes;
