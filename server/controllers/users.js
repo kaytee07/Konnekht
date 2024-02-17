@@ -30,7 +30,6 @@ export const addRemoveFriend = async (req, res) => {
     try {
         const { id, friendid } = req.params;
         const user = await User.findById(id);
-        console.log(id, friendid)
         
         if(user.friends.includes(friendid)) {
             user.friends = user.friends.filter((id) => id !== friendid);
@@ -44,7 +43,6 @@ export const addRemoveFriend = async (req, res) => {
         const formattedResponse = friends.map(({ id, firstName, lastName, location, occupation, picturePath }) => {
             return { id, firstName, lastName, location, occupation, picturePath }
         })
-        console.log(formattedResponse)
         res.status(200).json(formattedResponse);
 
     } catch (err) {
