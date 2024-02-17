@@ -6,7 +6,6 @@ import User from "../models/User.js";
 export const createPost = async (req, res) => {
     try {
         const { userId, description, picturePath, location } = req.body;
-        console.log(userId)
         const user = await User.findById(userId);
         const newPost = new Post({
             userId,
@@ -66,7 +65,6 @@ export const likePost = async () => {
             { likes: post.likes },
             { new: true } 
         );
-        console.log(updatedPost)
         res.status(200).json(updatedPost);
     } catch {
         res.status(404).json({ message: error.message });
