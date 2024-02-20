@@ -29,10 +29,9 @@ const LoginPage = () => {
             <Box 
                 width={ isNonMobileScreens ? "50%" : "93%"}
                 m="2rem auto"
-                borderRadius="1.5rem"
                 backgroundColor={theme.palette.background.alt}
             >
-                <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }} p={2}>
+                <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem", justifyContent: "center", display:"flex" }} p={2}>
                     Hello, Welcome to Konnekht
                 </Typography>
                 <img src="../../assets/linkedin.png" alt="" />

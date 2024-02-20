@@ -5,7 +5,7 @@ import {
     ManageAccountsOutlined,
     WorkOutlineOutlined
 } from "@mui/icons-material";
-import { Box, Typography, Divider, useTheme, Stack, Grid} from "@mui/material";
+import { Box, Typography, Divider, useTheme, Stack, Grid, useMediaQuery} from "@mui/material";
 import UserImage from  "../../components/UserImage";
 import WidgetWrapper from "../../components/WidgetWrapper";
 //import { useSelector } from "react-redux";
@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const UserWidget = ({ userId, picturePath }) => {
+    const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
     const [user, setUser] = useState(null);
     const { palette } = useTheme();
     const navigate = useNavigate();
