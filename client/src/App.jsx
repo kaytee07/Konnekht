@@ -4,7 +4,7 @@ import LoginPage from "./screens/loginPage";
 import ProfilePage from "./screens/profilePage";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import {  ThemeProvider } from "@mui/material";
+import {  ThemeProvider, CssBaseline } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
 import { Navigate } from "react-router-dom";
@@ -18,6 +18,7 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <ThemeProvider theme={theme}>    
+                <CssBaseline/>
                     <Routes>
                         <Route path="/" element={<LoginPage/>}/>
                         <Route path="/home" element={isAuth ? <HomePage/> : <Navigate to="/"/>}/>
