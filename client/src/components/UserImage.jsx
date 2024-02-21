@@ -7,7 +7,8 @@ const UserImage = ({ image, size = "60px"}) => {
         width={size}
         height={size}
         alt="user"
-        src={`http:/localhost:3001/assets/${image}`}
+        src={image ? `http://localhost:3001/assets/${image}` : `http://localhost:3001/assets/default-prof.jpeg`}
+        component="img"
     >
 
     </Box>

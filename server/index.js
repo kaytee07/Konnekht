@@ -35,7 +35,7 @@ app.use(cors({
     origin: "http://localhost:5173",
     credentials: true
 }));
-app.use("/asset", express.static(path.join(__dirname, 'public/assets')));
+app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
 app.use(cookieParser());
 
 

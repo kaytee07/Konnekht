@@ -55,7 +55,7 @@ const PostWidget = ({
                     friendId={postUserId}
                     name={name}
                     subtitle={location}
-                    userPicturePath={picturePath}
+                    userPicturePath={userPicture}
                 />
                 <Typography color={main} sx={{ mt:"1rem" }}>
                     {description}

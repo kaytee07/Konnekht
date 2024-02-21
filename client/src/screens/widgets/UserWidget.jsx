@@ -53,7 +53,9 @@ const UserWidget = ({ userId, picturePath }) => {
     } = user;
 
   return (
-    <WidgetWrapper>
+    <WidgetWrapper sx={{
+        width: {isNonMobileScreens}
+    }}>
         {/* FIRST ROW */}
         <Grid container
             gap="0.5rem"
@@ -63,7 +65,7 @@ const UserWidget = ({ userId, picturePath }) => {
             onClick={() => navigate(`/profile/${userId}`)}
         >
             <Grid item display="flex" justifyContent="space-between">
-                <Stack direction="row">
+                <Stack direction="row" gap="1rem">
                     <UserImage image={picturePath}>
 
                     </UserImage>
