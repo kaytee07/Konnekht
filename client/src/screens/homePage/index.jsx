@@ -9,7 +9,7 @@ import FriendListWidget from "../../screens/widgets/FriendListWidget";
 
 const HomePage = () => {
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
-    const {_id, picturePath } = useSelector((state) => state.user)
+    const {_id, profilePicturePath } = useSelector((state) => state.user)
     return (
         <Box>
             <Navbar />
@@ -21,7 +21,7 @@ const HomePage = () => {
               justifyContent="space-between"
             >
                 <Box  flexBasis={isNonMobileScreens ? "25%" : "85%" } width={isNonMobileScreens ? undefined : "96%"} margin={isNonMobileScreens ? undefined: "0px auto"}>
-                 <UserWidget userId={_id} picturePath={picturePath}/>
+                 <UserWidget userId={_id} picturePath={profilePicturePath}/>
                 </Box>
                 <Box  
                  flexBasis={isNonMobileScreens ? "42%" : undefined}
@@ -29,7 +29,7 @@ const HomePage = () => {
                  width={isNonMobileScreens ? undefined : "95%"} 
                  margin={isNonMobileScreens ? undefined: "2rem auto"}
                 >
-                    <MyPostWidget picturePath={picturePath} />
+                    <MyPostWidget picturePath={profilePicturePath} />
                     <PostsWidget userId={_id} />
                 </Box>
                 {isNonMobileScreens && (
